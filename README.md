@@ -22,15 +22,14 @@ Welcome to the Department Store Management System GitHub repository! This projec
 
 ## Installation
 
-[Insert installation instructions here]
 
 ## Usage
 
-[Insert usage instructions here]
+For use as a template for a department store management system
 
 ## Contributing
 
-[Insert contribution guidelines here]
+Vincent, Chilly, Starlordwp, Gunteh
 
 ## License
 
@@ -38,7 +37,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For questions, feedback, or support, please contact [your-email-address].
+For questions, feedback, or support, please contact no-reply@notemail.com .
 
 ---
 
