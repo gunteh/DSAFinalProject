@@ -193,7 +193,7 @@ public class BST {
 
             printInorder(node.left); //traverse the left node first
             System.out.print(node.data + " "); //print node data
-            printInorder(node.right); //then tranverse the right node
+            printInorder(node.right); //then traverse the right node
         }
 
         void postOrderTraversal(Node node) { //emulated from lecture notes
@@ -201,7 +201,7 @@ public class BST {
                 return; //ensures that the process returns if null node is reached
             } else {
                 postOrderTraversal(node.left); //traverse the left node first
-                postOrderTraversal(node.right); //then tranverse the right node
+                postOrderTraversal(node.right); //then traverse the right node
                 System.out.print(node.data + " "); //print node data
             }
         }
@@ -247,7 +247,7 @@ public class BST {
 
         static Boolean validatingBST(Node root)
         {
-            // Use inorder traverse, but also check that noot is not null
+            // Use inorder traverse, but also check that root is not null
             // if there is no left root, return false
             if (root != null) {
                 if (!validatingBST(root.left))

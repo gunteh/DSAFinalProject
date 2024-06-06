@@ -1,0 +1,72 @@
+import java.util.HashMap;
+import java.util.Map;
+
+author: LoganPoran
+year: 2024
+class Customer 
+{
+    private String phoneNumber;
+    private String loyaltyLevel;
+    private String rewards;
+
+    public Customer(String phoneNumber, String loyaltyLevel, String rewards) 
+    {
+        this.phoneNumber = phoneNumber;
+        this.loyaltyLevel = loyaltyLevel;
+        this.rewards = rewards;
+    }
+
+    public String getPhoneNumber() 
+    {
+        return phoneNumber;
+    }
+
+    public String getLoyaltyLevel() 
+    {
+        return loyaltyLevel;
+    }
+
+    public String getRewards()
+    {
+        return rewards;
+    }
+
+    @Override
+    public String toString() 
+    {
+        return "Customer{" +
+                "phoneNumber='" + phoneNumber + '\'' +
+                ", loyaltyLevel='" + loyaltyLevel + '\'' +
+                ", rewards='" + rewards + '\'' +
+                '}';
+    }
+}
+class CustomerLoyaltyRewards 
+{
+    private Map<String, Customer> customerMap;
+
+    public CustomerLoyaltyRewards() 
+    {
+        customerMap = new HashMap<>();
+    }
+
+    public void addCustomer(Customer customer) 
+    {
+        customerMap.put(customer.getPhoneNumber(), customer);
+    }
+
+    public Customer getCustomerByPhoneNumber(String phoneNumber) 
+    {
+        return customerMap.get(phoneNumber);
+    }
+
+    public boolean isCustomerExists(String phoneNumber) 
+    {
+        return customerMap.containsKey(phoneNumber);
+    }
+
+    public void removeCustomer(String phoneNumber) 
+    {
+        customerMap.remove(phoneNumber);
+    }
+}

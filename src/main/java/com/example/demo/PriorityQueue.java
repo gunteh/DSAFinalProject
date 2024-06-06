@@ -98,7 +98,7 @@ public class PriorityQueue {
     // View the highest priority order from the priority queue without removing it or deleting
     public Order peek() {
         if (orders.isEmpty()) {
-            throw new IllegalStateException("Errro: Priority queue is empty");
+            throw new IllegalStateException("Error: Priority queue is empty");
         }
         return orders.get(0);
     }
