@@ -243,7 +243,7 @@ public class BST {
 
         static Boolean validatingBST(Node root)
         {
-            // Use inorder traverse, but also check that noot is not null
+            // Use inorder traverse, but also check that root is not null
             // if there is no left root, return false
             if (root != null) {
                 if (!validatingBST(root.left))
