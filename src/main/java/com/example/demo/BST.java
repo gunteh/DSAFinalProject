@@ -91,7 +91,7 @@ public class BST {
                 return node;
             }
 
-            // Once the node is found, check the children nodes to find replacement
+            // Once the node  is found, check the children nodes to find replacement
             // first possible condition: no children nodes
             if (currentNode.left == null || currentNode.right == null) {
                 Node newCurrentNode;
