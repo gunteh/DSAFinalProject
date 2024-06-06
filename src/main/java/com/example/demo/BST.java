@@ -42,24 +42,28 @@ public class BST {
             root = null; //generate a standard binary tree
         }
 
-        public Node createNewNodes(int val) {
-            Node a = new Node(); //instantiate a new node
+        public Node createNewNodes(int val, int productID, String productName, String category, int inventoryAmount) {
+            Node a = new Node(val, productID, productName, category, inventoryAmount); //instantiate a new node
             a.data = val;
+            a.productID = productID;
+            a.productName = productName;
+            a.category = category;
+            a.inventoryAmount = inventoryAmount;
             a.left = null;
             a.right = null;
 
             return a;
         }
 
-        public Node insert(Node node, int value) {
+        public Node insert(Node node, int value, int productID, String productName, String category, int inventoryAmount) {
             if(node == null) {
-                return createNewNodes(value); //if node is null, create a new node
+                return createNewNodes(value, productID, productName, category, inventoryAmount); //if node is null, create a new node
             }
 
             if(value < node.data) { //if value is less than node, go to left child
-                node.left = insert(node.left, value);
+                node.left = insert(node.left, value, productID, productName, category, inventoryAmount);
             } else if((value > node.data)) { //else go to right child if greater
-                node.right = insert(node.right, value);
+                node.right = insert(node.right, value, productID, productName, category, inventoryAmount);
             }
 
             return node;
