@@ -15,18 +15,14 @@ import java.util.*;
 class Node {
     Node left;
     Node right;
-    int data;
     int productID;
     String productName;
-    String category;
     int inventoryAmount;
 
     // Constructor for the Node
-    Node(int data, int productID, String productName, String category, int inventoryAmount) {
-        this.data = data;
+    Node(int productID, String productName, int inventoryAmount) {
         this.productID = productID;
         this.productName = productName;
-        this.category = category;
         this.inventoryAmount = inventoryAmount;
         left = null;
         right = null;
@@ -42,12 +38,10 @@ public class BST {
             root = null; //generate a standard binary tree
         }
 
-        public Node createNewNodes(int val, int productID, String productName, String category, int inventoryAmount) {
-            Node a = new Node(val, productID, productName, category, inventoryAmount); //instantiate a new node
-            a.data = val;
+        public Node createNewNodes(int productID, String productName, int inventoryAmount) {
+            Node a = new Node(productID, productName, inventoryAmount); //instantiate a new node
             a.productID = productID;
             a.productName = productName;
-            a.category = category;
             a.inventoryAmount = inventoryAmount;
             a.left = null;
             a.right = null;
@@ -55,22 +49,22 @@ public class BST {
             return a;
         }
 
-        public Node insert(Node node, int value, int productID, String productName, String category, int inventoryAmount) {
+        public Node insert(Node node, int productID, String productName, int inventoryAmount) {
             if(node == null) {
-                return createNewNodes(value, productID, productName, category, inventoryAmount); //if node is null, create a new node
+                return createNewNodes(productID, productName, inventoryAmount); //if node is null, create a new node
             }
 
-            if(value < node.data) { //if value is less than node, go to left child
-                node.left = insert(node.left, value, productID, productName, category, inventoryAmount);
-            } else if((value > node.data)) { //else go to right child if greater
-                node.right = insert(node.right, value, productID, productName, category, inventoryAmount);
+            if(productID < node.productID) { //if value is less than node, go to left child
+                node.left = insert(node.left, productID, productName, inventoryAmount);
+            } else if((productID > node.productID)) { //else go to right child if greater
+                node.right = insert(node.right, productID, productName, inventoryAmount);
             }
 
             return node;
         }
 
 
-        public Node removeIterativeMethod(Node node, int value)
+        public Node removeIterativeMethod(Node node, int ID)
         {
             Node currentNode = node;
             Node previousNode = null;
@@ -78,9 +72,9 @@ public class BST {
             // Check to make sure current node is not the value and not null
             // traverse to the right or left node based on value comparison to
             // current node
-            while (currentNode != null && currentNode.data != value) {
+            while (currentNode != null && currentNode.productID != ID) {
                 previousNode = currentNode;
-                if (value < currentNode.data)
+                if (ID < currentNode.productID)
                     currentNode = currentNode.left;
                 else
                     currentNode = currentNode.right;
@@ -139,7 +133,7 @@ public class BST {
                 else
                     currentNode.right = tempNode.right;
 
-                currentNode.data = tempNode.data;
+                currentNode.productID = tempNode.productID;
             }
             return node;
         }
@@ -148,11 +142,11 @@ public class BST {
             if(node == null) {
                 return -1;
             }
-            if(node.data == value) {
-                return node.data; // if value is found in the current node, return
+            if(node.productID == value) {
+                return node.productID; // if value is found in the current node, return
             }
 
-            if(value < node.data) {
+            if(value < node.productID) {
                 return find(node.left, value); //recurse through left node
             } else {
                 return find(node.right, value); //recurse through right node
@@ -174,7 +168,7 @@ public class BST {
             System.out.print("\n"); //printing out the gaps and nodes iteratively
             for (int i = COUNTS; i < gap; i++)
                 System.out.print(" ");
-            System.out.print(node.data + "\n");
+            System.out.print(node.productID + "\n");
 
             printTree(node.left, gap); //go through left nodes
         }
@@ -192,7 +186,7 @@ public class BST {
                 return; //ensures that the process returns if null node is reached
 
             printInorder(node.left); //traverse the left node first
-            System.out.print(node.data + " "); //print node data
+            System.out.print(node.productID + " "); //print node data
             printInorder(node.right); //then traverse the right node
         }
 
@@ -202,7 +196,7 @@ public class BST {
             } else {
                 postOrderTraversal(node.left); //traverse the left node first
                 postOrderTraversal(node.right); //then traverse the right node
-                System.out.print(node.data + " "); //print node data
+                System.out.print(node.productID + " "); //print node data
             }
         }
 
@@ -211,7 +205,7 @@ public class BST {
             if (node == null)
                 return; //ensures that the process returns if null node is reached
 
-            System.out.print(node.data + " "); //print node data
+            System.out.print(node.productID + " "); //print node data
             printPreorder(node.left); //traverse the left node first
             printPreorder(node.right); //then tranverse the right node
         }
@@ -225,7 +219,7 @@ public class BST {
             while (node.left != null) {
                 node = node.left;
             }
-            System.out.print(node.data + " ");
+            System.out.print(node.productID + " ");
 
         }
 
@@ -238,7 +232,7 @@ public class BST {
             while (node.right != null) {
                 node = node.right;
             }
-            System.out.print(node.data + " ");
+            System.out.print(node.productID + " ");
 
         }
 
@@ -255,7 +249,7 @@ public class BST {
 
                 // check that previous node is not null and that root node is less
                 // than or equal to previous node
-                if (previousNode != null && root.data <= previousNode.data)
+                if (previousNode != null && root.productID <= previousNode.productID)
                     return false;
 
                 previousNode = root;
