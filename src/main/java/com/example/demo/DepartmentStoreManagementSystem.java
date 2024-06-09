@@ -16,7 +16,8 @@ public class DepartmentStoreManagementSystem extends Application {
 
     // TreeMap to store employees sorted by their ID
     private final Map<String, Employee> employees = new TreeMap<>();
-    private final Map<String, Product> products = new TreeMap<>();
+    // BST to store products sorted by their ID
+    private final BST products = new BST();
 
     // Main method to launch the application
     public static void main(String[] args) {
@@ -161,7 +162,7 @@ public class DepartmentStoreManagementSystem extends Application {
             int productIdInt = Integer.parseInt(idInput.getText());
             String productName = nameInput.getText();
             int inventoryAmount = Integer.parseInt(inventoryInput.getText());
-            products.put(productId, new Product(productIdInt, productName, inventoryAmount));
+            products.root = products.insert(products.root, productIdInt, productName, inventoryAmount);
             stage.close();
         });
 
@@ -267,8 +268,9 @@ public class DepartmentStoreManagementSystem extends Application {
         Button removeButton = new Button("Remove");
         GridPane.setConstraints(removeButton, 1, 1);
         removeButton.setOnAction(e -> {
-            String id = idInput.getText();
-            products.remove(id);
+            int productIdInt = Integer.parseInt(idInput.getText());
+            products.root = products.removeIterativeMethod(products.root, productIdInt);
+            // products.remove(id);
             stage.close();
         });
 
@@ -356,12 +358,14 @@ public class DepartmentStoreManagementSystem extends Application {
         Button updateButton = new Button("Update");
         GridPane.setConstraints(updateButton, 1, 3);
         updateButton.setOnAction(e -> {
-            String id = idInput.getText();
             int productIdInt = Integer.parseInt(idInput.getText());
-            if (products.containsKey(id)) {
+            if (products.find(products.root, productIdInt) != -1) {
+                // Retrieve the updated name and inventory amount from the input fields
                 String name = nameInput.getText();
                 int inventoryAmount = Integer.parseInt(inventoryInput.getText());
-                products.put(id, new Product(productIdInt, name, inventoryAmount));
+
+                // Update the product information by inserting a new node with the same id
+                products.root = products.insert(products.root, productIdInt, name, inventoryAmount);
             }
             stage.close();
         });
@@ -379,10 +383,7 @@ public class DepartmentStoreManagementSystem extends Application {
         stage.setTitle("List Products");
 
         ListView<String> listView = new ListView<>();
-        for (Map.Entry<String, Product> entry : products.entrySet()) {
-            Product product = entry.getValue();
-            listView.getItems().add("Product ID: " + product.productID + ", Product Name: " + product.productName + ", Inventory Amount: " + product.inventoryAmount);
-        }
+        products.traverseAndAddToList(products.root, listView);
 
         Scene scene = new Scene(listView, 400, 300);
         stage.setScene(scene);
@@ -424,11 +425,16 @@ public class DepartmentStoreManagementSystem extends Application {
         Button findButton = new Button("Find");
         GridPane.setConstraints(findButton, 1, 2);
         findButton.setOnAction(e -> {
-            //int id = Integer.parseInt(idInput.getText());
             String id = idInput.getText();
-            if (products.containsKey(id)) {
-                resultLabel.setText("Found: " + products.get(id));
+            // Search for the product in the prducts BST
+            int searchResult = products.find(products.root, Integer.parseInt(id));
+
+            // Check if the porduct was found in the BST
+            if (searchResult != -1) {
+                // Product found, update the result as a print
+                resultLabel.setText("Found: " + searchResult);
             } else {
+                // Product ID not found, update the result as a print
                 resultLabel.setText("Product ID not found.");
             }
         });

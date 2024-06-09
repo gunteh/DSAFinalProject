@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import javafx.scene.control.ListView;
+
 import java.security.*;
 import java.util.*;
 
@@ -209,6 +211,20 @@ public class BST {
             printPreorder(node.left); //traverse the left node first
             printPreorder(node.right); //then tranverse the right node
         }
+
+    // Traversing the BST and adding each node's information to the list view
+    void traverseAndAddToList(Node node, ListView<String> listView) {
+        if (node != null) {
+            // Visit the left subtree structure
+            traverseAndAddToList(node.left, listView);
+
+            // Add the current node's information to the list view as needed
+            listView.getItems().add("Product ID: " + node.productID + ", Product Name: " + node.productName + ", Inventory Amount: " + node.inventoryAmount);
+
+            // Visit the right subtree structure
+            traverseAndAddToList(node.right, listView);
+        }
+    }
 
         void findMin(Node node) {
             //traverse the left node and find smallest node
