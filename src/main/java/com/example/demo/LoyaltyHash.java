@@ -56,26 +56,16 @@ class CustomerLoyaltyRewards
 
         //Rewards member #1
         Customer cus1 = new Customer("4258885555", "10",  "15% off");
-        int customerPhoneNumber = Integer.parseInt("4258885555");
-        customerMap.put(customerPhoneNumber, cus1);
 
         //Rewards member #2
         Customer cus2 = new Customer("4250002222", "8",  "10% off");
-        int customerPhoneNumber2 = Integer.parseInt("4250002222");
-        customerMap.put(customerPhoneNumber2, cus2);
 
         //Rewards member #3
         Customer cus3 = new Customer("4251119999", "5",  "7% off");
-        int customerPhoneNumber3 = Integer.parseInt("4251119999");
-        customerMap.put(customerPhoneNumber3, cus3);
-
-
     }
 
     public void addCustomer(Customer customer)
     {
-        int customerPhoneNumber = Integer.parseInt(customer.getPhoneNumber());
-        customerMap.put(customerPhoneNumber, customer);
     }
 
     public Customer getCustomerByPhoneNumber(String phoneNumber)
