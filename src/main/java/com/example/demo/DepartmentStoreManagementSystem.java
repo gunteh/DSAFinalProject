@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -7,6 +9,8 @@ import javafx.stage.Stage;
 
 import java.util.Map;
 import java.util.TreeMap;
+
+
 
 public class DepartmentStoreManagementSystem extends Application {
 
