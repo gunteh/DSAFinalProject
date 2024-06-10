@@ -375,6 +375,7 @@ public class DepartmentStoreManagementSystem extends Application {
                 int inventoryAmount = Integer.parseInt(inventoryInput.getText());
 
                 // Update the product information by inserting a new node with the same id
+                products.root = products.removeIterativeMethod(products.root, productIdInt);
                 products.root = products.insert(products.root, productIdInt, name, inventoryAmount);
             }
             stage.close();
