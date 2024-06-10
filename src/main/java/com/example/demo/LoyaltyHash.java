@@ -63,11 +63,6 @@ class CustomerLoyaltyRewards
         //Rewards member #3
         Customer cus3 = new Customer("4251119999", "5",  "7% off");
     }
-
-    public void addCustomer(Customer customer)
-    {
-    }
-
     public Customer getCustomerByPhoneNumber(String phoneNumber)
     {
         return customerMap.get(phoneNumber);
