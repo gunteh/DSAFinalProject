@@ -63,12 +63,6 @@ class CustomerLoyaltyRewards
         Customer cus3 = new Customer(4251119999, 5,  "7% off");
         customerMap.put(4251119999, cus3);
     }
-
-    public void addCustomer(Customer customer) 
-    {
-        customerMap.put(customer.getPhoneNumber(), customer);
-    }
-
     public Customer getCustomerByPhoneNumber(String phoneNumber) 
     {
         return customerMap.get(phoneNumber);
