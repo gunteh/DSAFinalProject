@@ -58,11 +58,6 @@ public class DepartmentStoreManagementSystem extends Application {
         listProductsButton.setOnAction(e -> listProducts());
         grid.getChildren().add(listProductsButton);
 
-        Button findProductByIdButton = new Button("Find Product by ID");
-        GridPane.setConstraints(findProductByIdButton, 0, 5);
-        findProductByIdButton.setOnAction(e -> findProductById());
-        grid.getChildren().add(findProductByIdButton);
-
         Button addEmployeeButton = new Button("Add Employee");
         GridPane.setConstraints(addEmployeeButton, 1, 1);
         addEmployeeButton.setOnAction(e -> addEmployee());
@@ -82,11 +77,6 @@ public class DepartmentStoreManagementSystem extends Application {
         GridPane.setConstraints(listEmployeesButton, 1, 4);
         listEmployeesButton.setOnAction(e -> listEmployees());
         grid.getChildren().add(listEmployeesButton);
-
-        Button findEmployeeByIdButton = new Button("Find Employee by ID");
-        GridPane.setConstraints(findEmployeeByIdButton, 1, 5);
-        findEmployeeByIdButton.setOnAction(e -> findEmployeeById());
-        grid.getChildren().add(findEmployeeByIdButton);
 
         Scene scene = new Scene(grid, 300, 250);
         primaryStage.setScene(scene);
