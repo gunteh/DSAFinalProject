@@ -2,6 +2,7 @@ package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PriorityQueue {
     // Order class is for the data that will be held in each node
@@ -103,14 +104,44 @@ public class PriorityQueue {
         return orders.get(0);
     }
 
-    // Checking if the priority queue is empty
+    // Checking if the priority queue is empty or not
     public boolean isEmpty() {
         return orders.isEmpty();
     }
 
-    // Getting the size of the priority queue
+    // Getting the size of the priority queue as needed
     public int size() {
         return orders.size();
     }
+
+    public static void main(String[] args) {
+        // Instantiate some instances for PriorityQueue
+        PriorityQueue[] queues = new PriorityQueue[20];
+
+        // Initialize each PriorityQueue instance randomly
+        for (int i = 0; i < queues.length; i++) {
+            queues[i] = new PriorityQueue();
+        }
+
+        // Generate randomized data for products and customers
+        Random random = new Random();
+
+        for (PriorityQueue queue : queues) {
+            // Add a few orders to each PriorityQueue as needed
+            for (int j = 0; j < 10; j++) {
+                int productID = random.nextInt(100); // Product ID between 0 and 99 for simplicities sake
+                int customerID = random.nextInt(50); // Customer ID between 0 and 49 for simplicities sake
+                int orderPriority = random.nextInt(3) + 1; // Order priority between 1 and 3 for simplicities sake
+                queue.insert(productID, customerID, orderPriority);
+            }
+        }
+
+        // Display the highest priority order in each PriorityQueue
+        for (int i = 0; i < queues.length; i++) {
+            System.out.println("Queue " + (i + 1) + " highest priority order: " + queues[i].peek());
+        }
+    }
 }
+
+
 
